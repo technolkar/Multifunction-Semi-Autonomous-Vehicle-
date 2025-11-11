@@ -3,6 +3,8 @@ This project showcases the design and development of an IoT-enabled autonomous r
 The system was entirely self-funded and designed for potential applications in security, logistics automation, and smart agriculture.
 
 Project Description
+
+
 1️⃣ Concept and Objective
 The primary goal of this project was to create a multi-function intelligent robot capable of:
 Navigating autonomously using line-following and obstacle-avoidance algorithms.
