@@ -1,3 +1,5 @@
+//This code is written to control the four wheel drive system using the relay module Check-out the wiring before using this code.
+
 #define BLYNK_TEMPLATE_ID "TMPLlKf684b_"
 #define BLYNK_TEMPLATE_NAME "car iot based"
 #include <Blynk.h>
@@ -103,3 +105,4 @@ BLYNK_WRITE(V3)
       digitalWrite(relay3,HIGH);
     }
 }
+
