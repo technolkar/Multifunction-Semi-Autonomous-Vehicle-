@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7B0D1E,100:E63946&height=200&section=header&text=IoT%20Surveillance%20%26%20Manipulator%20Robot&fontSize=34&fontColor=ffffff&desc=Patrol%20%E2%80%A2%20Watch%20%E2%80%A2%20Pick%20up&descAlignY=72&descSize=18&animation=fadeIn" width="100%" alt="IoT Surveillance and Manipulator Robot banner"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7B0D1E,100:E63946&height=200&section=header&text=IoT%20Surveillance%20and%20Manipulator%20Robot&fontSize=34&fontColor=ffffff&desc=Patrol%20%E2%80%A2%20Watch%20%E2%80%A2%20Pick%20up&descAlignY=72&descSize=18&animation=fadeIn" width="100%" alt="IoT Surveillance and Manipulator Robot banner"/>
 
 ### 🎥 A four-wheel patrol robot with a live camera eye and a robotic arm.
 
