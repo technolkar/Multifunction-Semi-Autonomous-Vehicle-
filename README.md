@@ -1,41 +1,252 @@
-Overview
-This project showcases the design and development of an IoT-enabled autonomous robot that combines surveillance, navigation, and object manipulation in a single compact system. The robot can operate in manual and autonomous modes following a line path, avoiding obstacles, streaming real-time video, and controlling a servo-based robotic arm for pick-and-place tasks. It is powered by the ESP32 microcontroller, which provides both Wi-Fi and Bluetooth connectivity for remote control and IoT communication.
-The system was entirely self-funded and designed for potential applications in security, logistics automation, and smart agriculture.
+<div align="center">
 
-Project Description
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7B0D1E,100:E63946&height=200&section=header&text=IoT%20Surveillance%20%26%20Manipulator%20Robot&fontSize=34&fontColor=ffffff&desc=Patrol%20%E2%80%A2%20Watch%20%E2%80%A2%20Pick%20up&descAlignY=72&descSize=18&animation=fadeIn" width="100%" alt="IoT Surveillance and Manipulator Robot banner"/>
 
+### 🎥 A four-wheel patrol robot with a live camera eye and a robotic arm.
 
-1️⃣ Concept and Objective
-The primary goal of this project was to create a multi-function intelligent robot capable of:
-Navigating autonomously using line-following and obstacle-avoidance algorithms.
-Streaming live camera footage for surveillance and remote operation.
-Picking and placing objects using a servo-controlled robotic arm.
-Allowing wireless operation via Bluetooth and IoT dashboard over the Internet.
-This project integrates the core domains of embedded systems, robotics, and IoT communication into one versatile platform.
+![Arduino](https://img.shields.io/badge/Arduino-00878F?style=for-the-badge&logo=arduino&logoColor=white)
+![ESP8266](https://img.shields.io/badge/NodeMCU%20ESP8266-E7352C?style=for-the-badge&logo=espressif&logoColor=white)
+![C++](https://img.shields.io/badge/Arduino%20C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Blynk](https://img.shields.io/badge/Blynk%20IoT-23C48E?style=for-the-badge)
+![Camera](https://img.shields.io/badge/Wi--Fi%20camera-444444?style=for-the-badge)
 
-2️⃣ Design and Mechanical Structure
-The robot chassis was fabricated using a durable acrylic base plate mounted on four DC geared motors for differential movement. The lower layer holds the battery, ESP32 controller, motor driver, and sensors. The upper layer carries the camera module, servo-based arm, and IoT electronics. A small robotic manipulator arm was constructed using lightweight acrylic links and micro-servos for base rotation, shoulder lift, and gripper actuation. This setup provides stable motion and compact size suitable for indoor or small-scale field environments.
+![Funding](https://img.shields.io/badge/self--funded-project-E63946?style=flat-square)
+![Year](https://img.shields.io/badge/built-2022-7B0D1E?style=flat-square)
+![Modes](https://img.shields.io/badge/modes-manual%20%7C%20autonomous-blueviolet?style=flat-square)
 
-3️⃣ Drive and Navigation System
-The movement of the robot is handled by four DC geared motors controlled via an L298N motor driver module. Two front motors and two rear motors provide forward, reverse, and turning actions. For autonomous navigation, the robot combines: Infrared sensors placed at the front underside for line detection. Ultrasonic sensor at the front for obstacle avoidance. When operating in autonomous mode, the robot follows a predefined black line path on the floor. If an obstacle is detected ahead, it automatically stops and takes a detour before returning to the path. In manual mode, all movements can be controlled remotely via Bluetooth or IoT dashboard.
+</div>
 
-4️⃣ Robotic Arm and Manipulation
-A three-degree-of-freedom robotic arm is mounted on top of the chassis.
-It consists of: Base rotation servo, Shoulder servo for up-down movement, Gripper servo for holding and releasing objects. The arm can be operated through a mobile interface using slider controls on the IoT dashboard. This feature allows the robot to perform pick-and-place operations such as lifting small objects or sorting items in a workspace.
+---
 
-5️⃣ Surveillance System
+## 📌 At a glance
 
-For real-time monitoring, Wi-Fi camera module is integrated on the robot’s upper deck. The camera streams live video directly to a web or mobile application, enabling remote surveillance. This feature is especially useful for monitoring restricted areas, warehouses, or greenhouses in agriculture.
+> A **semi-autonomous robot** that combines **surveillance, navigation and object handling** in one compact platform. Drive it from your phone, or switch it to **autonomous mode** and it follows a line on its own and stops for obstacles — while a **Wi-Fi camera** streams live video and a **3-DOF arm** picks up small objects.
 
-6️⃣ Control Electronics and IoT Integration
-The entire system is powered and managed by the ESP32 microcontroller, which serves multiple roles: Reads input from ultrasonic and IR sensors. Controls DC motors through the L298N driver. Operates servos of the robotic arm using PWM signals. Manages wireless communication via Wi-Fi (IoT) and Bluetooth. All control commands and sensor feedback are transmitted to an IoT dashboard (like Blynk or MQTT interface). The dashboard allows: Directional control of the robot (forward, reverse, left, right). Live camera feed display. Servo sliders for arm positioning. Obstacle and sensor status indicators. Through this IoT integration, the robot can be operated remotely from any internet-connected device.
+<div align="center">
+  <img src="media/surv-hero.jpg" width="85%" alt="The surveillance robot outdoors with camera and arm"/>
+  <br/><sub><i>Four-wheel drive base, pan-tilt Wi-Fi camera and servo arm on a two-deck chassis</i></sub>
+</div>
 
-7️⃣ Power Management
-The robot is powered by a 12V Li-ion rechargeable battery. The main supply is divided into:
-12V line for motors and drivers. 5V regulated output for the ESP32 and servos using a buck converter. Switches and fuses are included for protection and power isolation during charging or maintenance.
+| 🗓️ Built | 💰 Funding | 🧠 My role | 🎮 Control |
+|:---:|:---:|:---:|:---:|
+| 2022 | Self-funded | Designed and built the whole robot | Phone app · autonomous line following |
 
-8️⃣ Working Procedure
-Power on the system; ESP32 initializes all modules and connects to Wi-Fi or Bluetooth. If autonomous mode is selected, IR sensors detect the line and drive the motors to follow it. If an obstacle is encountered, the ultrasonic sensor triggers avoidance logic. In manual mode, the user can control movement and arm motion from the mobile IoT dashboard. The camera provides a live video feed for remote observation. The robotic arm can be positioned to pick or place small objects based on live visual feedback.
+---
 
-9️⃣ Features and Capabilities
-Fully autonomous navigation with line-following and obstacle avoidance. Bluetooth and IoT-based manual control for flexibility. Integrated robotic arm for pick-and-place functionality. Real-time video streaming for surveillance and monitoring. ESP32-based embedded system, combining sensing, control, and communication. Compact, modular, and battery-powered design. Suitable for security patrols, logistics automation, and smart agriculture.
+## 📑 Contents
+
+- [What it can do](#-what-it-can-do)
+- [Two brains, two modes](#-two-brains-two-modes)
+- [Hardware](#-hardware)
+- [Circuit](#-circuit)
+- [Code walkthrough](#-code-walkthrough)
+- [Gallery](#-gallery)
+- [Repository map](#-repository-map)
+- [What I learned](#-what-i-learned)
+- [Where it could go](#-where-it-could-go)
+
+---
+
+## ✨ What it can do
+
+<table>
+<tr>
+<td width="33%" align="center" valign="top">
+
+### 📱 IoT driving
+Forward, back, left and right from a **Blynk dashboard** — from anywhere with internet.
+
+</td>
+<td width="33%" align="center" valign="top">
+
+### 🧭 Self-driving
+**IR sensors** follow a black line; an **ultrasonic sensor** stops the robot when something is in the way.
+
+</td>
+<td width="33%" align="center" valign="top">
+
+### 🎥 Live video
+A pan-tilt **Wi-Fi camera** streams to a phone for remote patrol and monitoring.
+
+</td>
+</tr>
+<tr>
+<td width="33%" align="center" valign="top">
+
+### 🦾 Pick & place
+A **3-DOF servo arm** — base, shoulder and gripper — lifts and moves small objects.
+
+</td>
+<td width="33%" align="center" valign="top">
+
+### 🔋 Battery powered
+12 V Li-ion pack with a buck-regulated 5 V rail for logic and servos.
+
+</td>
+<td width="33%" align="center" valign="top">
+
+### 🛡️ Built for real use
+Security patrols, warehouse checks or greenhouse monitoring.
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🧠 Two brains, two modes
+
+```mermaid
+flowchart TB
+    U[📱 Phone] <-->|Wi-Fi| B[(Blynk Cloud)]
+    B <--> N[NodeMCU ESP8266<br/>IoT drive]
+    N --> RL[Relay board] --> M[4 × DC motors]
+    subgraph AUTO[Autonomous mode]
+        IR[IR line sensors] --> A[Arduino<br/>line follower]
+        US[Ultrasonic sensor] --> A
+        A --> D[L298N driver] --> M
+    end
+    CAM[🎥 Wi-Fi camera] -->|live stream| U
+    ARM[🦾 3-DOF servo arm]
+```
+
+- **IoT mode** — the NodeMCU receives commands from the app and switches four relays to drive the motor pairs.
+- **Autonomous mode** — an Arduino reads two IR sensors and an ultrasonic sensor and drives the motors through an L298N driver.
+- Only one mode drives the wheels at a time.
+
+---
+
+## 🔌 Hardware
+
+| Subsystem | Components |
+|---|---|
+| 🧠 **Controllers** | NodeMCU (ESP8266) for IoT · Arduino for line following |
+| 🏎️ **Drive** | 4 × DC geared motors · off-road wheels · relay board + L298N driver |
+| 👁️ **Sensors** | 2 × IR line sensors · HC-SR04 ultrasonic |
+| 🎥 **Vision** | Pan-tilt Wi-Fi camera with live streaming |
+| 🦾 **Arm** | 3 servos (base · shoulder · gripper) on acrylic links |
+| 🔋 **Power** | 12 V Li-ion · buck converter to 5 V · switches and fuses |
+| 🏗️ **Chassis** | Two-deck acrylic plates — drive and battery below, camera and arm above |
+
+---
+
+## 🔌 Circuit
+
+<div align="center">
+<img src="images-base-circuit.JPG" width="85%" alt="Base circuit: Arduino line follower on the left, NodeMCU IoT drive on the right"/>
+<br/><sub><b>Left:</b> Arduino + IR + ultrasonic + L298N (autonomous) · <b>Right:</b> NodeMCU + driver (IoT)</sub>
+</div>
+
+---
+
+## 💻 Code walkthrough
+
+### 📱 [`IOT_CAR_TK_CODE.ino`](IOT_CAR_TK_CODE.ino) — IoT drive (NodeMCU)
+
+```cpp
+BLYNK_WRITE(V0) {                 // forward button
+  int forward = param.asInt();
+  digitalWrite(relay1, forward ? LOW : HIGH);   // left motors
+  digitalWrite(relay3, forward ? LOW : HIGH);   // right motors
+}
+```
+
+| Pin | Action | Relays |
+|:---:|---|---|
+| `V0` | ⬆️ Forward | 1 + 3 |
+| `V1` | ⬇️ Back | 2 + 4 |
+| `V2` | ➡️ Right | 1 + 4 |
+| `V3` | ⬅️ Left | 2 + 3 |
+
+### 🧭 [`LINE_FOLLOWING_WITH_OBSTACLE.ino`](LINE_FOLLOWING_WITH_OBSTACLE.ino) — autonomous mode (Arduino)
+
+```cpp
+int distance = pulseIn(10, HIGH) * 0.17;   // ultrasonic echo → mm
+if (distance <= 100) stop_motor();          // obstacle within 10 cm
+else {
+  if (!R_S && !L_S) forward();
+  if (!R_S &&  L_S) turnLeft();
+  if ( R_S && !L_S) turnRight();
+  if ( R_S &&  L_S) stop_motor();           // end of line
+}
+```
+
+<details>
+<summary><b>▶ How to run it</b></summary>
+
+1. **IoT drive:** install the ESP8266 board package and Blynk library, add **your own** Blynk auth token and Wi-Fi details, upload to a NodeMCU, and add four buttons on `V0`–`V3`
+2. **Line follower:** upload `LINE_FOLLOWING_WITH_OBSTACLE.ino` to an Arduino UNO; wire motors to pins 2–5, IR sensors to 6–7, ultrasonic Trig/Echo to 9/10
+3. Lay a black tape track on a light floor and switch to autonomous mode
+
+</details>
+
+---
+
+## 📸 Gallery
+
+<table>
+<tr>
+<td width="50%"><img src="media/surv-front.jpg" alt="Front view of the robot"/></td>
+<td width="50%"><img src="media/surv-arm-left.jpg" alt="Robot with camera and arm, left side"/></td>
+</tr>
+<tr>
+<td align="center"><sub><b>Front</b> — camera, ultrasonic and IR sensors</sub></td>
+<td align="center"><sub><b>Side</b> — sensor deck and arm</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="media/surv-arm-right.jpg" alt="Robot with arm raised, right side"/></td>
+<td width="50%"><img src="media/surv-wiring.jpg" alt="Wiring the electronics deck"/></td>
+</tr>
+<tr>
+<td align="center"><sub><b>Arm side</b> — 3-DOF servo manipulator</sub></td>
+<td align="center"><sub><b>Build</b> — wiring the electronics deck</sub></td>
+</tr>
+</table>
+
+---
+
+## 🗂️ Repository map
+
+```
+📦 Multifunction-Semi-Autonomous-Vehicle-
+ ┣ 📜 IOT_CAR_TK_CODE.ino                 ← NodeMCU + Blynk four-wheel IoT drive
+ ┣ 📜 LINE_FOLLOWING_WITH_OBSTACLE.ino    ← Arduino line follower with obstacle stop
+ ┣ 🖼️ images-base-circuit.JPG             ← base circuit diagram
+ ┣ 📂 media                               ← photos used in this README
+ ┗ 📘 README.md
+```
+
+---
+
+## 🧠 What I learned
+
+- 🔀 **Splitting control across two microcontrollers** — one for connectivity, one for real-time sensing
+- 🧭 **Sensor-based navigation** — reading IR and ultrasonic sensors and turning them into motor decisions
+- 🦾 **Servo kinematics** for a small manipulator
+- 🛠️ **Full-stack hardware** — chassis, wiring, power and firmware, all built and funded myself
+
+---
+
+## 🚀 Where it could go
+
+- [ ] Obstacle **detour** and return to the line, instead of a full stop
+- [ ] Merge both modes onto a single ESP32
+- [ ] Camera-based object detection to guide the arm
+- [ ] Mapping and navigation with ROS 2 *(I'm currently learning ROS 2)*
+
+---
+
+<div align="center">
+
+### 👋 Built by **Ajay Arjun Mannolkar**
+M.Sc. Mechatronics & Cyber-Physical Systems · THD Deggendorf
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-technolkar.github.io-7B0D1E?style=for-the-badge&logo=githubpages&logoColor=white)](https://technolkar.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-ajaymannolkar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ajaymannolkar)
+[![YouTube](https://img.shields.io/badge/YouTube-TECHNOL%20KAR-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TechnolkarInnovations)
+
+⭐ *If this robot gave you ideas, give the repo a star!*
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:E63946,100:7B0D1E&height=100&section=footer" width="100%"/>
+
+</div>
